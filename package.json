@@ -1,0 +1,33 @@
+{
+  "name": "lrs-sqs-poller",
+  "description": "Poller application to poll LRS related SQS",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ets-berkeley-edu/cloud-lrs.git"
+  },
+  "licenses": [
+    {
+      "type": "UC Berkeley",
+      "url": "http://ipira.berkeley.edu/software-copyright-notice-and-disclaimer"
+    }
+  ],
+  "dependencies": {
+    "aws-sdk": "2.4.5",
+    "basic-auth": "latest",
+    "body-parser": "latest",
+    "bunyan": "latest",
+    "bunyan-prettystream": "latest",
+    "config": "latest",
+    "dtrace-provider": "latest",
+    "express": "latest",
+    "forever": "latest",
+    "joi": "latest",
+    "lodash": "latest",
+    "moment": "latest",
+    "yargs": "latest"
+  },
+  "engines": {
+    "node": "4.3.2"
+  }
+}
