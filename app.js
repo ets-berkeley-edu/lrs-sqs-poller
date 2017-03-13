@@ -34,10 +34,9 @@
  // in production, the service script will automatically respawn the instance
  process.on('uncaughtException', function(err) {
    log.error({'err': err}, 'Uncaught exception was raised, restarting the process');
-   QueueAPI.init(function(){
-     
-   });
-   //process.exit(1);
+   QueueAPI.init(function() {});
+   // TODO Remove this for production version. Use it only for development/debugging purposes
+   // process.exit(1);
  });
 
  // Start listening for messages
