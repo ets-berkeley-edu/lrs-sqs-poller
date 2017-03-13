@@ -30,8 +30,8 @@
  var QueueAPI = require('./lib/poller');
 
  // All unexpected or uncaught errors will be caught and logged here. At this point we cannot
- // guarantee that the system is functioning properly anymore so we kill the process. When running
- // in production, the service script will automatically respawn the instance
+ // guarantee that the system is functioning properly anymore so we kill the process during development phases to introduce fixes.
+ // When running in production, the service script will automatically respawn the instance
  process.on('uncaughtException', function(err) {
    log.error({'err': err}, 'Uncaught exception was raised, restarting the process');
    QueueAPI.init(function() {});
