@@ -1,0 +1,29 @@
+{
+  "aws": {
+    "credentials" : {
+      "key": "accessKeyId",
+      "secret": "secretAccessKey"
+    },
+    "region": "aws region"
+  },
+  "sqs": {
+    "apiVersion": "2012-11-05",
+    "queueUrl": "sqs url",
+    "region": "sqs region",
+    "deadletter": {
+      "queueUrl": "dead-letter-queue-url",
+      "region": "sqs region"
+    }
+  },
+  "lambda": {
+    "apiVersion": "2015-03-31"
+  },
+  "lrs": {
+    "ingestService": "lrs-ingest-microservice",
+    "region": "lambda region"
+  },
+  "log": {
+    "level": "info",
+    "stream": "stdout"
+  }
+}
