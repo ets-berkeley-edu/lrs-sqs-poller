@@ -1,0 +1,10 @@
+.DS_STORE
+*.log
+
+config/*
+!config/default.json
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
