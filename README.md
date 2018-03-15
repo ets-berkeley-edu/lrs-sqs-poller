@@ -67,3 +67,12 @@ eb terminate
 
 For the full list of EB CLI commands:
 https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb3-cmd-commands.html
+
+## Deploying the app locally
+
+Run the following commands
+```
+nvm use
+npm install
+node app
+```

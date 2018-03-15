@@ -1,4 +1,8 @@
 {
+  "app": {
+    "https": false,
+    "port": 2000
+  },
   "aws": {
     "credentials" : {
       "key": "accessKeyId",
@@ -22,8 +26,20 @@
     "ingestService": "lrs-ingest-microservice",
     "region": "lambda region"
   },
-  "log": {
-    "level": "info",
-    "stream": "stdout"
+  "logger": {
+    "streams": [
+      {
+        "level": "info",
+        "stream": "stdout"
+      },
+      {
+        "level": "debug",
+        "path": "logs/app.log"
+      }
+    ],
+    "useColor": false
+  },
+  "poller": {
+    "concurrencyCount": 1
   }
 }
