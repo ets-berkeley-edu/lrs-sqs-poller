@@ -23,25 +23,25 @@
  * ENHANCEMENTS, OR MODIFICATIONS.
  */
 
-var AWS = require('aws-sdk');
-var config = require('config');
+var gulp = require('gulp');
+var eslint = require('gulp-eslint');
+var runSequence = require('run-sequence');
 
-var LrsSqsPoller = require('./lib/core/api');
-var QueueAPI = require('./lib/poll/poller');
-
-var log = LrsSqsPoller.logger('app');
-
-// Initialize the app server
-LrsSqsPoller.init(function(err) {
-  if (err) {
-    return log.error({'err': err}, 'An error has occured while starting the LRS SQS Poller');
-  }
-
-  // Start listening for messages on SQS
-  QueueAPI.init(function(err) {
-    if (err) {
-      log.error({'err': err}, 'Unable to start listening for messages on the queue, restarting the process');
-      process.exit(1);
-    }
-  });
+/**
+ * Lint javascript files
+ */
+gulp.task('eslint', function() {
+  return gulp
+    .src([
+      'gulpfile.js',
+      'lib/**/*.js',
+      'scripts/**/*.js',
+      'test/*.js'
+    ])
+    .pipe(eslint())
+    // Output results to console. Alternatively, use eslint.formatEach().
+    .pipe(eslint.format())
+    // To have the process exit with an error code (1) on
+    // lint error, return the stream and pipe to failAfterError last.
+    .pipe(eslint.failAfterError());
 });
