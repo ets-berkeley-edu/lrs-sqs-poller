@@ -1,5 +1,5 @@
 /**
- * Copyright ©2017. The Regents of the University of California (Regents). All Rights Reserved.
+ * Copyright ©2018. The Regents of the University of California (Regents). All Rights Reserved.
  *
  * Permission to use, copy, modify, and distribute this software and its documentation
  * for educational, research, and not-for-profit purposes, without fee and without a
@@ -23,26 +23,25 @@
  * ENHANCEMENTS, OR MODIFICATIONS.
  */
 
- var AWS = require('aws-sdk');
- var config = require('config');
+var AWS = require('aws-sdk');
+var config = require('config');
 
- var log = require('./lib/logger')('app');
- var QueueAPI = require('./lib/poller');
+var LrsSqsPoller = require('./lib/core/api');
+var QueueAPI = require('./lib/poll/poller');
 
- // All unexpected or uncaught errors will be caught and logged here. At this point we cannot
- // guarantee that the system is functioning properly anymore so we kill the process during development phases to introduce fixes.
- // When running in production, the service script will automatically respawn the instance
- process.on('uncaughtException', function(err) {
-   log.error({'err': err}, 'Uncaught exception was raised, restarting the process');
-   QueueAPI.init(function() {});
-   // TODO Remove this for production version. Use it only for development/debugging purposes
-   // process.exit(1);
- });
+var log = LrsSqsPoller.logger('app');
 
- // Start listening for messages
- QueueAPI.init(function(err) {
-   if (err) {
-     log.error({'err': err}, 'Unable to start listening for messages on the queue, restarting the process');
-     process.exit(1);
-   }
- });
+// Initialize the app server
+LrsSqsPoller.init(function(err) {
+  if (err) {
+    return log.error({'err': err}, 'An error has occured while starting the Data Loch');
+  }
+
+  // Start listening for messages on SQS
+  QueueAPI.init(function(err) {
+    if (err) {
+      log.error({'err': err}, 'Unable to start listening for messages on the queue, restarting the process');
+      process.exit(1);
+    }
+  });
+});
