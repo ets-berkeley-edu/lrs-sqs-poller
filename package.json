@@ -1,7 +1,7 @@
 {
   "name": "lrs-sqs-poller",
   "description": "Poller application to poll LRS related SQS",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "repository": {
     "type": "git",
     "url": "git://github.berkeley.edu/ETS/lrs-sqs-poller.git"
@@ -34,7 +34,7 @@
     "yargs": "7.0.2"
   },
   "engines": {
-    "node": "6.11.5"
+    "node": "6.12.2"
   },
   "scripts": {
     "pretest": "echo 'Clean up old artifacts before running tests'; rm -f logs/test.log",
