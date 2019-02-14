@@ -34,7 +34,7 @@
       },
       {
         "level": "debug",
-        "path": "logs/app.log"
+        "path": "app.log"
       }
     ],
     "useColor": false
