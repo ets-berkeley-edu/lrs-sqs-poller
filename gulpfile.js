@@ -25,13 +25,12 @@
 
 var gulp = require('gulp');
 var eslint = require('gulp-eslint');
-var runSequence = require('run-sequence');
 
 /**
  * Lint javascript files
  */
-gulp.task('eslint', function() {
-  return gulp
+gulp.task('eslint', function(done) {
+  gulp
     .src([
       'gulpfile.js',
       'lib/**/*.js',
@@ -44,4 +43,5 @@ gulp.task('eslint', function() {
     // To have the process exit with an error code (1) on
     // lint error, return the stream and pipe to failAfterError last.
     .pipe(eslint.failAfterError());
+  done();
 });
